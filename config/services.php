@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'flipp' => [
+        'key' => env('FLIPP_KEY')
+    ],
+
 ];
