@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a3e940d2f8d0e1415f07ba0618be5a0",
+    "content-hash": "fb346350108d90badd63e2f0512418a5",
     "packages": [
+        {
+            "name": "archtechx/laravel-seo",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/archtechx/laravel-seo.git",
+                "reference": "bd4a67a1ac62d59e951a70a89e7284514d6fb97a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/archtechx/laravel-seo/zipball/bd4a67a1ac62d59e951a70a89e7284514d6fb97a",
+                "reference": "bd4a67a1ac62d59e951a70a89e7284514d6fb97a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.24",
+                "imliam/laravel-blade-helper": "^1.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "nunomaduro/larastan": "^0.6.10",
+                "orchestra/testbench": "^6.9",
+                "pestphp/pest": "^1.2",
+                "pestphp/pest-plugin-laravel": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArchTech\\SEO\\SEOServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "ArchTech\\SEO\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Štancl",
+                    "email": "samuel@archte.ch"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/archtechx/laravel-seo/issues",
+                "source": "https://github.com/archtechx/laravel-seo/tree/v0.2.0"
+            },
+            "time": "2021-05-26T11:21:18+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",
@@ -906,6 +963,78 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "imliam/laravel-blade-helper",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imliam/laravel-blade-helper.git",
+                "reference": "38ea95f7db2a99d65fcf3c84b6cbde3f798452df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imliam/laravel-blade-helper/zipball/38ea95f7db2a99d65fcf3c84b6cbde3f798452df",
+                "reference": "38ea95f7db2a99d65fcf3c84b6cbde3f798452df",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.0",
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ImLiam\\BladeHelper\\BladeHelperServiceProvider"
+                    ],
+                    "aliases": {
+                        "BladeHelper": "ImLiam\\BladeHelper\\BladeHelperFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ImLiam\\BladeHelper\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Liam Hammett",
+                    "email": "liam@liamhammett.com",
+                    "homepage": "https://liamhammett.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An easier way to define custom Blade directives.",
+            "homepage": "https://github.com/imliam/laravel-blade-helper",
+            "keywords": [
+                "blade",
+                "imliam",
+                "laravel",
+                "laravel-blade-helper"
+            ],
+            "support": {
+                "issues": "https://github.com/imliam/laravel-blade-helper/issues",
+                "source": "https://github.com/imliam/laravel-blade-helper/tree/v1.4.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/imliam",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-03-02T17:42:40+00:00"
         },
         {
             "name": "laravel/framework",

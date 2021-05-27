@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-seo::meta />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <title>AST Explorer</title>
 </head>
 <body class="flex flex-col min-h-screen antialiased bg-white font-sans text-black">
     <header class="w-full bg-gray-100 py-4 px-8 border-b border-gray-300 shadow-sm">
