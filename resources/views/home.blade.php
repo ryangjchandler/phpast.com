@@ -9,15 +9,18 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="flex flex-col min-h-screen antialiased bg-white font-sans text-black">
-    <header class="w-full bg-gray-100 py-4 px-8 border-b border-gray-300 shadow-sm">
-        <div class="flex items-center justify-between w-1/2 pr-8">
+    <header class="w-full bg-gray-100 py-3 px-8 border-b border-gray-300 shadow-sm">
+        <div class="flex items-center justify-between w-full pr-8">
             <h1 class="font-medium">
                 <a href="{{ route('home') }}" class="text-gray-700 hover:text-gray-900">AST Explorer</a>
             </h1>
 
-            <button type="button" x-data x-on:click="$dispatch('generate')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 text-sm rounded">
-                Generate
-            </button>
+            <div class="space-x-2 text-sm">
+                <span>Use</span> <kbd class="text-xs bg-gray-50 border border-b-2 border-gray-300 rounded shadow-sm px-3 py-1">Cmd + Enter</kbd> <span>or</span>
+                <button type="button" x-data x-on:click="$dispatch('generate')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 text-sm rounded">
+                    Generate
+                </button>
+            </div>
         </div>
     </header>
 

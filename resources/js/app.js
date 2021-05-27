@@ -16,6 +16,25 @@ window.ASTExplorer = function () {
             editor.on('change', () => {
                 this.source = editor.getDoc().getValue()
             })
+
+            if (navigator.userAgent.indexOf('Mac OS X') !== -1) {
+                editor.setOption('extraKeys', {
+
+                    'Cmd-Enter': async () => {
+                        await this.generate()
+
+                        this.format()
+                    }
+                })
+            } else {
+                editor.setOption('extraKeys', {
+                    'Ctrl-Enter': async () => {
+                        await this.generate()
+
+                        this.format()
+                    },
+                })
+            }
         },
         format() {
             this.$refs.json.textContent = ''
