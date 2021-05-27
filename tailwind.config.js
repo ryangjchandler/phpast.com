@@ -1,13 +1,18 @@
 module.exports = {
-  purge: [
-      './resources/views/**/*.blade.php'
-  ],
-  darkMode: false,
-  theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+    purge: {
+        content: [
+            './resources/views/**/*.blade.php'
+        ],
+        options: {
+            safelist: ['text-red-600', 'text-xs', 'font-medium', 'font-mono']
+        }
+    },
+    darkMode: false,
+    theme: {
+        extend: {},
+    },
+    variants: {
+        extend: {},
+    },
+    plugins: [],
 }
