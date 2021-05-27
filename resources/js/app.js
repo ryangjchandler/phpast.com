@@ -18,6 +18,8 @@ window.ASTExplorer = function () {
             })
         },
         format() {
+            this.$refs.json.textContent = ''
+
             const formatter = new JSONFormatter(this.ast, 2, {
                 hoverPreviewEnabled: true
             });
