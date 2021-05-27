@@ -2,9 +2,9 @@
 
 namespace App\Http\Components;
 
-use Error;
-use PhpParser\ParserFactory;
 use Radio\Radio;
+use PhpParser\Error;
+use PhpParser\ParserFactory;
 
 class AST
 {
@@ -26,6 +26,8 @@ class AST
 
     public function generate()
     {
+        $this->error = null;
+
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
 
         try {

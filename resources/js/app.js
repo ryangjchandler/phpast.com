@@ -20,11 +20,16 @@ window.ASTExplorer = function () {
         format() {
             this.$refs.json.textContent = ''
 
-            const formatter = new JSONFormatter(this.ast, 2, {
-                hoverPreviewEnabled: true
-            });
+            if (this.error !== null) {
+                this.$refs.json.classList.add('text-red-600', 'text-xs', 'font-medium', 'font-mono')
+                this.$refs.json.textContent = this.error
+            } else {
+                const formatter = new JSONFormatter(this.ast, 2, {
+                    hoverPreviewEnabled: true
+                });
 
-            this.$refs.json.appendChild(formatter.render())
+                this.$refs.json.appendChild(formatter.render())
+            }
         }
     }
 }
