@@ -1,6 +1,8 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  purge: [
+      './resources/views/**/*.blade.php'
+  ],
+  darkMode: false,
   theme: {
     extend: {},
   },
