@@ -10,7 +10,11 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@codemirror/basic-setup": "^0.18.2",
+        "alpinejs": "^2.8.2",
         "autoprefixer": "^10.2.6",
+        "codemirror": "^5.61.1",
+        "json-formatter-js": "^2.3.4",
         "laravel-mix": "^6.0.6",
         "postcss": "^8.1.14",
         "tailwindcss": "^2.1.2"
