@@ -8,33 +8,34 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<body class="flex flex-col min-h-screen antialiased bg-white font-sans text-black">
-    <header class="w-full bg-gray-100 py-3 px-8 border-b border-gray-300 shadow-sm">
+<body class="flex flex-col min-h-screen font-sans antialiased text-black bg-white">
+    <header class="w-full px-8 py-3 bg-gray-100 border-b border-gray-300 shadow-sm">
         <div class="flex items-center justify-between w-full pr-8">
             <h1 class="font-medium">
                 <a href="{{ route('home') }}" class="text-gray-700 hover:text-gray-900">AST Explorer</a>
             </h1>
 
             <div class="space-x-2 text-sm">
-                <span>Use</span> <kbd class="text-xs bg-gray-50 border border-b-2 border-gray-300 rounded shadow-sm px-3 py-1">Cmd + Enter</kbd> <span>or</span>
-                <button type="button" x-data x-on:click="$dispatch('generate')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 text-sm rounded">
+                <span>Use</span> <kbd class="px-3 py-1 text-xs border border-b-2 border-gray-300 rounded shadow-sm bg-gray-50">Cmd + Enter</kbd> <span>or</span>
+                <button type="button" x-data x-on:click="$dispatch('generate')" class="px-4 py-2 text-sm font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
                     Generate
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="flex-1 flex">
+    <main class="flex flex-1">
         <div x-data="{ ...@radio('App\\Http\\Components\\AST'), ...window.ASTExplorer() }" x-init="init" x-on:generate.window="await generate(); format()" class="flex flex-1 divide-x-2 divide-gray-300">
             <div class="w-1/2 h-full" x-ref="editor" placeholder="Type your code here..."></div>
-            <div x-ref="json" class="h-full w-1/2 p-4"></div>
+            <div x-ref="json" class="w-1/2 h-full p-4"></div>
         </div>
     </main>
 
-    <footer class="bg-gray-100 py-4 px-8 text-sm text-gray-600 border-t border-gray-300">
+    <footer class="px-8 py-4 text-sm text-gray-600 bg-gray-100 border-t border-gray-300">
         <div class="flex items-center justify-between">
             <div>
                 Built by <a href="https://twitter.com/ryangjchandler" target="_blank" rel="noopener noreferrer" class="text-gray-700 underline hover:text-gray-900">Ryan Chandler</a>.
+                Powered by <a href="https://github.com/radio-js/radio" target="_blank" rel="noopener noreferrer" class="text-gray-700 underline hover:text-gray-900">Radio.js</a> and <a href="https://github.com/nikic/PHP-Parser" target="_blank" rel="noopener noreferrer" class="text-gray-700 underline hover:text-gray-900">PHP-Parser</a>
             </div>
 
             <div class="flex items-center space-x-4">
