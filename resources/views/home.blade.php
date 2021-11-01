@@ -16,7 +16,10 @@
             </h1>
 
             <div class="space-x-2 text-sm">
-                <span>Use</span> <kbd class="px-3 py-1 text-xs border border-b-2 border-gray-300 rounded shadow-sm bg-gray-50">Cmd + Enter</kbd> <span>or</span>
+                <button type="button" x-data x-on:click="$dispatch('save')" class="px-4 py-2 text-sm font-bold text-white bg-green-500 rounded hover:bg-blue-700">
+                    Save
+                </button>
+
                 <button type="button" x-data x-on:click="$dispatch('generate')" class="px-4 py-2 text-sm font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
                     Generate
                 </button>
@@ -25,7 +28,12 @@
     </header>
 
     <main class="flex flex-1">
-        <div x-data="{ ...@radio('App\\Http\\Components\\AST'), ...window.ASTExplorer() }" x-init="init" x-on:generate.window="await generate(); format()" class="flex flex-1 divide-x-2 divide-gray-300">
+        <div
+            x-data="{ ...@radio('App\\Http\\Components\\AST'), ...window.ASTExplorer() }"
+            x-init="init"
+            x-on:generate.window="await generate(); format()"
+            class="flex flex-1 divide-x-2 divide-gray-300"
+        >
             <div class="w-1/2 h-full" x-ref="editor" placeholder="Type your code here..."></div>
             <div x-ref="json" class="w-1/2 h-full p-4"></div>
         </div>

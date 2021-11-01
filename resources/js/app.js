@@ -7,6 +7,12 @@ import 'codemirror/lib/codemirror.css';
 window.ASTExplorer = function () {
     return {
         init() {
+            const params = new URLSearchParams(window.location.search)
+
+            if (params.has('c')) {
+                this.source = atob(params.get('c'))
+            }
+
             const editor = CodeMirror(this.$refs.editor, {
                 value: this.source,
                 mode: 'php',
@@ -19,7 +25,10 @@ window.ASTExplorer = function () {
 
             if (navigator.userAgent.indexOf('Mac OS X') !== -1) {
                 editor.setOption('extraKeys', {
-
+                    'Cmd-S': () => {
+                        this.save()
+                        this.format()
+                    },
                     'Cmd-Enter': async () => {
                         await this.generate()
 
@@ -28,6 +37,10 @@ window.ASTExplorer = function () {
                 })
             } else {
                 editor.setOption('extraKeys', {
+                    'Ctrl-S': () => {
+                        this.save()
+                        this.format()
+                    },
                     'Ctrl-Enter': async () => {
                         await this.generate()
 
@@ -35,6 +48,13 @@ window.ASTExplorer = function () {
                     },
                 })
             }
+        },
+        save() {
+            let params = new URLSearchParams(window.location.search)
+
+            params.set('c', btoa(this.source))
+
+            window.location.search = params.toString();
         },
         format() {
             this.$refs.json.textContent = ''
