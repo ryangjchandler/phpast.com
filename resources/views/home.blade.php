@@ -16,11 +16,11 @@
             </h1>
 
             <div class="space-x-2 text-sm">
-                <button type="button" x-data x-on:click="$dispatch('save')" class="px-4 py-2 text-sm font-bold text-white bg-green-500 rounded hover:bg-blue-700">
+                <button title="Ctrl/Cmd + S" type="button" x-data x-on:click="$dispatch('save')" class="px-4 py-2 text-sm font-bold text-white bg-green-500 rounded hover:bg-blue-700">
                     Save
                 </button>
 
-                <button type="button" x-data x-on:click="$dispatch('generate')" class="px-4 py-2 text-sm font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+                <button title="Ctrl/Cmd + Enter" type="button" x-data x-on:click="$dispatch('generate')" class="px-4 py-2 text-sm font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
                     Generate
                 </button>
             </div>
