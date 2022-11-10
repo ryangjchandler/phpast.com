@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="token" content="{{ csrf_token() }}">
     <x-seo::meta />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -29,9 +30,12 @@
 
     <main class="flex flex-1">
         <div
-            x-data="{ ...@radio('App\\Http\\Components\\AST'), ...window.ASTExplorer() }"
+            x-data="ASTExplorer({
+                route: @js(url('/ast')),
+                source: @js($source),
+            })"
             x-init="init"
-            x-on:generate.window="await generate(); format()"
+            x-on:generate.window="await generate()"
             class="flex flex-1 divide-x-2 divide-gray-300"
         >
             <div class="w-1/2 h-full" x-ref="editor" placeholder="Type your code here..."></div>
@@ -57,7 +61,6 @@
         </div>
     </footer>
 
-    @radioScripts
     @stack('scripts')
 </body>
 </html>

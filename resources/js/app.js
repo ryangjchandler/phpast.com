@@ -4,8 +4,11 @@ import CodeMirror from 'codemirror'
 import 'codemirror/mode/php/php';
 import 'codemirror/lib/codemirror.css';
 
-window.ASTExplorer = function () {
+window.ASTExplorer = function ({ route, source }) {
     return {
+        route,
+        source,
+        ast: null,
         init() {
             const params = new URLSearchParams(window.location.search)
 
@@ -31,8 +34,6 @@ window.ASTExplorer = function () {
                     },
                     'Cmd-Enter': async () => {
                         await this.generate()
-
-                        this.format()
                     }
                 })
             } else {
@@ -49,6 +50,24 @@ window.ASTExplorer = function () {
                 })
             }
         },
+        async generate() {
+            return fetch(this.route, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="token"]').content,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    code: this.source,
+                })
+            })
+                .then(response => response.json())
+                .then(ast => {
+                    this.ast = ast
+                    this.format()
+                })
+        },
         save() {
             let params = new URLSearchParams(window.location.search)
 
@@ -59,16 +78,11 @@ window.ASTExplorer = function () {
         format() {
             this.$refs.json.textContent = ''
 
-            if (this.error !== null) {
-                this.$refs.json.classList.add('text-red-600', 'text-xs', 'font-medium', 'font-mono')
-                this.$refs.json.textContent = this.error
-            } else {
-                const formatter = new JSONFormatter(this.ast, 2, {
-                    hoverPreviewEnabled: true
-                });
+            const formatter = new JSONFormatter(this.ast, 2, {
+                hoverPreviewEnabled: true
+            });
 
-                this.$refs.json.appendChild(formatter.render())
-            }
+            this.$refs.json.appendChild(formatter.render())
         }
     }
 }
