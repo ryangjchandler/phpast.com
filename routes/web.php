@@ -24,5 +24,11 @@ Route::post('/ast', function (Request $request) {
     $code = $request->input('code');
     $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
 
-    return $parser->parse($code);
+    try {
+        return $parser->parse($code);
+    } catch (PhpParser\Error $e) {
+        return [
+            'error' => $e->getMessage(),
+        ];
+    }
 });
