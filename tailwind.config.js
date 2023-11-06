@@ -1,18 +1,19 @@
-module.exports = {
-    purge: {
-        content: [
-            './resources/views/**/*.blade.php'
-        ],
-        options: {
-            safelist: ['text-red-600', 'text-xs', 'font-medium', 'font-mono']
-        }
-    },
-    darkMode: false,
+import defaults from 'tailwindcss/defaultTheme';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: [
+        './resources/**/*.blade.php',
+    ],
     theme: {
-        extend: {},
-    },
-    variants: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                mono: [
+                    'Fira Code',
+                    ...defaults.fontFamily.mono,
+                ]
+            }
+        },
     },
     plugins: [],
-}
+};
