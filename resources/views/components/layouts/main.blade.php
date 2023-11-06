@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('favicon.svg') }}">
     <title>phpast.com - Generate and explore PHP syntax trees.</title>
+    <!-- Fathom - beautiful, simple website analytics -->
+        <script src="https://cdn.usefathom.com/script.js" data-site="MKINPKNO" defer></script>
+    <!-- / Fathom -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=fira-code:500,600" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
