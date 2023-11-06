@@ -6,8 +6,13 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "autoprefixer": "^10.4.16",
         "axios": "^1.1.2",
+        "json-formatter-js": "^2.3.4",
         "laravel-vite-plugin": "^0.8.0",
-        "vite": "^4.0.0"
+        "monaco-editor": "^0.44.0",
+        "tailwindcss": "^3.3.5",
+        "vite": "^4.0.0",
+        "vite-plugin-monaco-editor": "^1.1.0"
     }
 }
