@@ -32,7 +32,7 @@
 </head>
 
 <body class="antialiased min-h-screen flex flex-col">
-    <header class="max-w-7xl mx-auto px-6 md:px-8 py-8 flex items-center justify-between w-full">
+    <header class="mx-auto px-6 md:px-8 py-4 flex items-center justify-between w-full">
         <a href="{{ route('index') }}" class="flex items-center gap-x-4">
             <img src="{{ asset('favicon.svg') }}" class="border border-neutral-300 rounded-lg w-12 h-12 hover:border-neutral-500 transition-colors duration-300 ease-in-out">
 

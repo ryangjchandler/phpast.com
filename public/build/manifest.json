@@ -470,7 +470,7 @@
     "src": "node_modules/monaco-editor/esm/vs/language/typescript/tsMode.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-11c7a45e.css",
+    "file": "assets/app-9fb6e60c.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
