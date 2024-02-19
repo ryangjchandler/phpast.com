@@ -52,7 +52,7 @@
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 md:px-8 flex-1 w-full flex flex-col">
+    <main class="flex-1 w-full flex flex-col">
         {{ $slot }}
     </main>
 

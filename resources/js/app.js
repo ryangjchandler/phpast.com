@@ -3,6 +3,7 @@ import JSONFormatter from 'json-formatter-js';
 import * as monaco from 'monaco-editor'
 
 let inlayHintLocations = [];
+let inlay = false;
 let editor
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,8 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
         generate(code);
     })
 
+    const inlayCheckbox = document.getElementById('inlay');
+    inlayCheckbox.addEventListener('change', () => {
+        inlay = inlayCheckbox.checked;
+        editor.setValue(editor.getValue());
+    })
+
     monaco.languages.registerInlayHintsProvider('php', {
         provideInlayHints(model, range, token) {
+            if (!inlay) {
+                return {
+                    hints: [],
+                    dispose: () => {},
+                }
+            }
+
             return {
                 hints: inlayHintLocations.map(({ type, startPosition, endPosition }) => {
                     return {
