@@ -2,9 +2,12 @@ import axios from 'axios';
 import JSONFormatter from 'json-formatter-js';
 import * as monaco from 'monaco-editor'
 
+let inlayHintLocations = [];
+let editor
+
 document.addEventListener('DOMContentLoaded', () => {
     const element = document.getElementById('editor');
-    const editor = monaco.editor.create(element, {
+    editor = monaco.editor.create(element, {
         value: "<?php\n\n",
         language: 'php',
         theme: 'vs-dark',
@@ -27,6 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         generate(code);
     })
+
+    monaco.languages.registerInlayHintsProvider('php', {
+        provideInlayHints(model, range, token) {
+            return {
+                hints: inlayHintLocations.map(({ type, startPosition, endPosition }) => {
+                    return {
+                        kind: monaco.languages.InlayHintKind.Type,
+                        position: model.getPositionAt(endPosition + 1),
+                        label: `: ${type}`,
+                    }
+                }),
+                dispose: () => {},
+            }
+        }
+    })
 })
 
 async function generate(code) {
@@ -40,7 +58,7 @@ async function generate(code) {
 
     axios.post('/api/generate', { code })
         .then(response => response.data)
-        .then(({ ast, error = undefined }) => {
+        .then(({ ast, significantNodeLocations, error = undefined }) => {
             output.innerHTML = "";
 
             if (error !== undefined) {
@@ -58,5 +76,9 @@ async function generate(code) {
             output.appendChild(formatter.render());
 
             loader.style.display = "none";
+
+            inlayHintLocations = significantNodeLocations;
+
+            editor.setValue(code);
         });
 }
