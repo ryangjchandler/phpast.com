@@ -4,6 +4,7 @@ import * as monaco from 'monaco-editor'
 
 let inlayHintLocations = [];
 let inlay = false;
+let version = '8.4';
 let editor
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -38,6 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
         editor.setValue(editor.getValue());
     })
 
+    const versionSelect = document.getElementById('version');
+    version = versionSelect.value;
+    versionSelect.addEventListener('change', () => {
+        version = versionSelect.value;
+    })
+
     monaco.languages.registerInlayHintsProvider('php', {
         provideInlayHints(model, range, token) {
             if (!inlay) {
@@ -70,7 +77,7 @@ async function generate(code) {
     errorContainer.style.display = "none";
     loader.style.display = 'flex';
 
-    axios.post('/api/generate', { code })
+    axios.post('/api/generate', { code, version })
         .then(response => response.data)
         .then(({ ast, significantNodeLocations, error = undefined }) => {
             output.innerHTML = "";

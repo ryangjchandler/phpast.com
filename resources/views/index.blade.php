@@ -9,6 +9,12 @@
                 </p>
 
                 <div class="flex items-center gap-x-4">
+                    <select name="version" id="version" class="border border-neutral-300 rounded-lg px-2 py-1 text-sm appearance-none">
+                        @foreach($phpVersions as $version => $label)
+                            <option value="{{ $version }}" @selected($version === '8.4')>{{ $label }}</option>
+                        @endforeach
+                    </select>
+
                     <div class="flex items-center gap-x-2">
                         <input type="checkbox" id="inlay">
                         <label for="inlay" title="When enabled, class names will be displayed at the end of each node." class="text-sm">

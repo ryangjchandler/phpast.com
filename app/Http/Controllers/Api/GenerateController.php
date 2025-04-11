@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\PhpVersion;
 use App\Traverser\CollectSignificantNodeLocations;
 use Illuminate\Http\Request;
 use PhpParser\Error;
-use PhpParser\Lexer\Emulative;
 use PhpParser\NodeTraverser;
-use PhpParser\Parser\Php8;
-use PhpParser\PhpVersion;
 
 class GenerateController
 {
     public function __invoke(Request $request)
     {
         $code = $request->input('code');
-        $lexer = new Emulative(PhpVersion::getNewestSupported());
-        $parser = new Php8($lexer, PhpVersion::getNewestSupported());
+        $version = $request->enum('version', PhpVersion::class);
 
-        $ast = $parser->parse($code);
-
-        $traverser = new NodeTraverser($collector = new CollectSignificantNodeLocations());
-        $traverser->traverse($ast);
+        $parser = $version->toPhpParser();
 
         try {
+            $ast = $parser->parse($code);
+
+            $traverser = new NodeTraverser($collector = new CollectSignificantNodeLocations());
+            $traverser->traverse($ast);
+
             return response()->json([
                 'ast' => $ast,
                 'significantNodeLocations' => $collector->getSignificantNodeLocations(),
