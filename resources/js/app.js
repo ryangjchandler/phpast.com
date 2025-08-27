@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const code = editor.getValue();
 
         if (window.umami) {
-            window.umami('Generated AST');
+            window.umami.track('Generated AST');
         }
 
         generate(code);
