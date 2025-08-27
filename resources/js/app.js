@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
         const code = editor.getValue();
 
-        if (window.fathom) {
-            fathom.trackEvent('generated ast');
+        if (window.umami) {
+            window.umami('Generated AST');
         }
 
         generate(code);

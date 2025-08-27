@@ -23,12 +23,11 @@
     <meta property="twitter:description" content="Generate and explore PHP syntax trees." />
     <meta property="twitter:image" content="{{ asset("og.png") }}" />
 
-    <!-- Fathom - beautiful, simple website analytics -->
-        <script src="https://cdn.usefathom.com/script.js" data-site="MKINPKNO" defer></script>
-    <!-- / Fathom -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=fira-code:500,600" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="7e044134-2203-4ade-83d8-ea2dd7696888"></script>
 </head>
 
 <body class="antialiased min-h-screen flex flex-col">
