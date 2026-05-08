@@ -13,6 +13,7 @@ enum PhpVersion: string
     case Php82 = '8.2';
     case Php83 = '8.3';
     case Php84 = '8.4';
+    case Php85 = '8.5';
 
     public function toDisplayable(): string
     {
@@ -22,6 +23,7 @@ enum PhpVersion: string
             self::Php82 => 'PHP 8.2',
             self::Php83 => 'PHP 8.3',
             self::Php84 => 'PHP 8.4',
+            self::Php85 => 'PHP 8.5',
         };
     }
 
@@ -33,6 +35,7 @@ enum PhpVersion: string
             self::Php82 => ParserPhpVersion::fromComponents(8, 2),
             self::Php83 => ParserPhpVersion::fromComponents(8, 3),
             self::Php84 => ParserPhpVersion::fromComponents(8, 4),
+            self::Php85 => ParserPhpVersion::fromComponents(8, 5),
         });
     }
 
